@@ -26,6 +26,7 @@
             /* Critical - Red */
             --critical-50: #ff4b3a;
             --critical-60: #db2b2a;
+            --critical-70: #b71d29;
             
             /* Success - Green */
             --success-50: #33d653;
@@ -39,11 +40,37 @@
             --neutral-05: #fcfdfd;
             --neutral-10: #f9fafa;
             --neutral-20: #ebeeee;
+            --neutral-30: #dde2e2;
             --neutral-50: #bcc6c6;
             --neutral-70: #798d8e;
             --neutral-90: #344243;
             --neutral-100: #161c1d;
             --white: #ffffff;
+            
+            /* Spacing */
+            --space-05x: 2px;
+            --space-1x: 4px;
+            --space-2x: 8px;
+            --space-3x: 12px;
+            --space-4x: 16px;
+            --space-5x: 20px;
+            --space-6x: 24px;
+            --space-7x: 28px;
+            --space-8x: 32px;
+            --space-9x: 36px;
+            --space-10x: 40px;
+            
+            /* Border radius */
+            --radius-sm: var(--space-05x);  /* 2px */
+            --radius-md: var(--space-1x);   /* 4px - buttons, cards, panels */
+            --radius-lg: var(--space-2x);   /* 8px - badges */
+            
+            /* Border */
+            --border-width: 1px;
+            --border-default: var(--neutral-30);
+            --border-input: var(--neutral-50);
+            --border-critical: var(--critical-70);
+            --border-divider: var(--neutral-30);
             
             /* Text colors */
             --text-default: var(--neutral-100);
@@ -54,7 +81,6 @@
             
             /* Semantic */
             --bg: var(--neutral-05);
-            --border: var(--neutral-20);
         }
 
         body {
@@ -67,11 +93,11 @@
         .container {
             max-width: 600px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 var(--space-6x);
         }
 
         header {
-            padding: 32px 0;
+            padding: var(--space-8x) 0;
         }
 
         .logo {
@@ -82,7 +108,7 @@
         }
 
         .hero {
-            padding: 80px 0 120px;
+            padding: var(--space-10x) 0 calc(var(--space-10x) * 3);
             text-align: center;
         }
 
@@ -90,20 +116,20 @@
             font-size: 2.5rem;
             font-weight: 700;
             line-height: 1.2;
-            margin-bottom: 20px;
+            margin-bottom: var(--space-5x);
             color: var(--text-default);
         }
 
         .hero p {
             font-size: 1.125rem;
             color: var(--text-subdued);
-            margin-bottom: 40px;
+            margin-bottom: var(--space-10x);
             line-height: 1.7;
         }
 
         .waitlist-form {
             display: flex;
-            gap: 12px;
+            gap: var(--space-3x);
             justify-content: center;
             flex-wrap: wrap;
         }
@@ -111,9 +137,9 @@
         .waitlist-form input {
             flex: 1;
             min-width: 220px;
-            padding: 14px 18px;
-            border: 1px solid var(--neutral-50);
-            border-radius: 8px;
+            padding: var(--space-3x) var(--space-4x);
+            border: var(--border-width) solid var(--border-input);
+            border-radius: var(--radius-md);
             font-size: 1rem;
             font-family: inherit;
             background: var(--white);
@@ -125,11 +151,11 @@
         }
 
         .btn {
-            padding: 14px 28px;
+            padding: var(--space-3x) var(--space-6x);
             background: var(--brand-50);
             color: var(--neutral-100);
             border: none;
-            border-radius: 8px;
+            border-radius: var(--radius-md);
             font-size: 1rem;
             font-weight: 700;
             font-family: inherit;
@@ -142,13 +168,13 @@
         }
 
         .form-note {
-            margin-top: 16px;
+            margin-top: var(--space-4x);
             font-size: 0.875rem;
             color: var(--text-subdued);
         }
 
         footer {
-            padding: 40px 0;
+            padding: var(--space-10x) 0;
             text-align: center;
             font-size: 0.875rem;
             color: var(--text-subdued);
