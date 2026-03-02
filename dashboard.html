@@ -189,11 +189,69 @@
             color: var(--critical-60);
         }
 
-        /* Insights Section */
-        .insights-section {
-            grid-column: span 3;
+        .card-change.neutral {
+            color: var(--text-subdued);
         }
 
+        .card-sub {
+            font-size: 0.8125rem;
+            color: var(--text-subdued);
+            margin-top: var(--space-1x);
+        }
+
+        /* Section headings */
+        .section {
+            margin-bottom: var(--space-10x);
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-subdued);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: var(--space-4x);
+        }
+
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: var(--space-6x);
+        }
+
+        .section-grid.wide {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .card.span-2 {
+            grid-column: span 2;
+        }
+
+        .card.urgent {
+            border-left: 3px solid var(--critical-60);
+        }
+
+        .card.urgent .card-title {
+            color: var(--critical-60);
+        }
+
+        .trend-placeholder {
+            height: 80px;
+            background: var(--neutral-10);
+            border-radius: var(--space-2x);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-subdued);
+            font-size: 0.8125rem;
+            margin-top: var(--space-3x);
+        }
+
+        /* AI Recommendations */
         .insights-card {
             background: var(--white);
             border-radius: var(--space-3x);
@@ -257,11 +315,11 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            .dashboard-grid {
+            .section-grid.wide {
                 grid-template-columns: 1fr;
             }
 
-            .insights-section {
+            .card.span-2 {
                 grid-column: span 1;
             }
         }
@@ -273,73 +331,120 @@
             <a href="index.html" class="header-logo">
                 <img src="assets/Jane_Logo_Colour_NoTM_RGB.png" alt="Jane">
             </a>
-            <span class="header-title">Pulse</span>
+            <span class="header-title">Hello, Helen</span>
         </div>
     </header>
 
     <main class="main">
         <div class="page-header">
-            <h1>Your clinic insights</h1>
-            <p>Here's how your practice is performing this month.</p>
+            <h1>March 6, 2026</h1>
+            <p>Your clinic insights — here's how your practice is performing.</p>
         </div>
 
-        <div class="dashboard-grid">
-            <div class="card">
-                <div class="card-header">
-                    <span class="card-title">Revenue</span>
+        <!-- Financial -->
+        <section class="section">
+            <h2 class="section-title">Financial</h2>
+            <div class="section-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Revenue this week</span>
+                    </div>
+                    <div class="card-value">$6,240</div>
+                    <div class="card-change positive">
+                        <span>↑ 8% vs last week</span>
+                    </div>
                 </div>
-                <div class="card-value">$24,580</div>
-                <div class="card-change positive">
-                    <span>↑ 12% from last month</span>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Collection rate</span>
+                    </div>
+                    <div class="card-value">94%</div>
+                    <div class="card-change positive">
+                        <span>↑ 2% from last month</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Payments</span>
+                    </div>
+                    <div class="card-value">$4,820</div>
+                    <div class="card-sub">Processed this week</div>
+                    <div class="card-value" style="font-size: 1.25rem; margin-top: var(--space-3x);">$1,180</div>
+                    <div class="card-sub">Pending</div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Outstanding balances</span>
+                    </div>
+                    <div class="card-value">$2,340</div>
+                    <div class="card-sub">Across 12 accounts</div>
+                </div>
+                <div class="card urgent span-2">
+                    <div class="card-header">
+                        <span class="card-title">Urgent attention</span>
+                    </div>
+                    <p style="font-size: 0.9375rem; line-height: 1.5;">2 expired credit cards on file — payments may fail. <span class="highlight">Update in Jane → Billing</span></p>
                 </div>
             </div>
+        </section>
 
-            <div class="card">
-                <div class="card-header">
-                    <span class="card-title">Appointments</span>
+        <!-- Patients & scheduling -->
+        <section class="section">
+            <h2 class="section-title">Patients & scheduling</h2>
+            <div class="section-grid wide">
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">Haven't booked in 60+ days</span>
+                    </div>
+                    <div class="card-value">23 patients</div>
+                    <div class="card-sub">Consider a check-in or recall campaign</div>
                 </div>
-                <div class="card-value">187</div>
-                <div class="card-change positive">
-                    <span>↑ 8% from last month</span>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">No-show trends</span>
+                    </div>
+                    <div class="card-value" style="font-size: 1.25rem;">12% this month</div>
+                    <div class="card-sub">Down from 15% last month</div>
+                    <div class="trend-placeholder">Chart: no-shows over time</div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span class="card-title">New patients</span>
+                    </div>
+                    <div class="card-value">14</div>
+                    <div class="card-sub">This month so far</div>
+                    <div class="trend-placeholder">Chart: new patient trends</div>
                 </div>
             </div>
+        </section>
 
-            <div class="card">
-                <div class="card-header">
-                    <span class="card-title">Patient Retention</span>
+        <!-- AI Recommendations -->
+        <section class="section">
+            <h2 class="section-title">Recommendations from AI</h2>
+            <div class="insights-card">
+                <div class="insights-header">
+                    <div class="insights-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/>
+                            <path d="M12 6a1 1 0 0 0-1 1v5a1 1 0 0 0 .29.71l3 3a1 1 0 0 0 1.42-1.42L13 11.59V7a1 1 0 0 0-1-1z"/>
+                        </svg>
+                    </div>
+                    <h2 class="insights-title">Recommendations from AI</h2>
                 </div>
-                <div class="card-value">73%</div>
-                <div class="card-change negative">
-                    <span>↓ 3% from last month</span>
+                
+                <div class="insight-item">
+                    <p>Your <span class="highlight">Tuesday afternoon</span> slots have 40% more cancellations than other days. Consider sending reminder messages 48 hours before these appointments.</p>
                 </div>
-            </div>
-
-            <div class="insights-section">
-                <div class="insights-card">
-                    <div class="insights-header">
-                        <div class="insights-icon">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/>
-                                <path d="M12 6a1 1 0 0 0-1 1v5a1 1 0 0 0 .29.71l3 3a1 1 0 0 0 1.42-1.42L13 11.59V7a1 1 0 0 0-1-1z"/>
-                            </svg>
-                        </div>
-                        <h2 class="insights-title">AI Insights</h2>
-                    </div>
-                    
-                    <div class="insight-item">
-                        <p>Your <span class="highlight">Tuesday afternoon</span> slots have 40% more cancellations than other days. Consider sending reminder messages 48 hours before these appointments.</p>
-                    </div>
-                    
-                    <div class="insight-item">
-                        <p><span class="highlight">23 patients</span> haven't booked a follow-up in over 60 days. A quick check-in email could help bring them back.</p>
-                    </div>
-                    
-                    <div class="insight-item">
-                        <p>Revenue from <span class="highlight">massage therapy</span> is up 18% this month. This service is trending — consider promoting it more.</p>
-                    </div>
+                
+                <div class="insight-item">
+                    <p><span class="highlight">23 patients</span> haven't booked a follow-up in over 60 days. A quick check-in email could help bring them back.</p>
+                </div>
+                
+                <div class="insight-item">
+                    <p>Revenue from <span class="highlight">massage therapy</span> is up 18% this month. This service is trending — consider promoting it more.</p>
                 </div>
             </div>
-        </div>
+        </section>
     </main>
 </body>
 </html>
