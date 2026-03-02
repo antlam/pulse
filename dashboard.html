@@ -252,63 +252,26 @@
         }
 
         /* AI Recommendations */
-        .insights-card {
+        .recommendations-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-6x);
+        }
+
+        .recommendation-card {
             background: var(--white);
             border-radius: var(--space-3x);
             padding: var(--space-6x);
             border: var(--border-width) solid var(--border-default);
         }
 
-        .insights-header {
-            display: flex;
-            align-items: center;
-            gap: var(--space-3x);
-            margin-bottom: var(--space-5x);
-        }
-
-        .insights-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--brand-05);
-            border-radius: var(--space-2x);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .insights-icon svg {
-            width: 20px;
-            height: 20px;
-            stroke: var(--brand-60);
-            fill: none;
-            stroke-width: 2;
-        }
-
-        .insights-title {
-            font-size: 1.125rem;
-            font-weight: 600;
-        }
-
-        .insight-item {
-            padding: var(--space-4x) 0;
-            border-bottom: var(--border-width) solid var(--border-default);
-        }
-
-        .insight-item:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        .insight-item:first-child {
-            padding-top: 0;
-        }
-
-        .insight-item p {
+        .recommendation-card p {
             color: var(--text-default);
             line-height: 1.6;
+            margin-bottom: 0;
         }
 
-        .insight-item .highlight {
+        .recommendation-card .highlight {
             color: var(--brand-60);
             font-weight: 600;
         }
@@ -339,6 +302,10 @@
 
             .card.span-2 {
                 grid-column: span 1;
+            }
+
+            .recommendations-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -439,30 +406,26 @@
         <!-- AI Recommendations -->
         <section class="section">
             <h2 class="section-title">Recommendations from AI</h2>
-            <div class="insights-card">
-                <div class="insights-header">
-                    <div class="insights-icon">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/>
-                            <path d="M12 6a1 1 0 0 0-1 1v5a1 1 0 0 0 .29.71l3 3a1 1 0 0 0 1.42-1.42L13 11.59V7a1 1 0 0 0-1-1z"/>
-                        </svg>
-                    </div>
-                    <h2 class="insights-title">Recommendations from AI</h2>
-                </div>
-                
-                <div class="insight-item">
+            <div class="recommendations-grid">
+                <div class="recommendation-card">
                     <p>Your <span class="highlight">Tuesday afternoon</span> slots have 40% more cancellations than other days. Consider sending reminder messages 48 hours before these appointments.</p>
                     <a href="#" class="insight-cta">Send reminders in Jane</a>
                 </div>
-                
-                <div class="insight-item">
+                <div class="recommendation-card">
                     <p><span class="highlight">23 patients</span> haven't booked a follow-up in over 60 days. A quick check-in email could help bring them back.</p>
                     <a href="#" class="insight-cta">View patient list</a>
                 </div>
-                
-                <div class="insight-item">
+                <div class="recommendation-card">
                     <p>Revenue from <span class="highlight">massage therapy</span> is up 18% this month. This service is trending — consider promoting it more.</p>
                     <a href="#" class="insight-cta">See service details</a>
+                </div>
+                <div class="recommendation-card">
+                    <p>You've had <span class="highlight">4 no-shows</span> this week — your reminder settings may need adjusting.</p>
+                    <a href="#" class="insight-cta">Adjust reminder settings</a>
+                </div>
+                <div class="recommendation-card">
+                    <p><span class="highlight">10 patients</span> requested 9am this month but you're not open then — this could be costing you bookings.</p>
+                    <a href="#" class="insight-cta">Update availability</a>
                 </div>
             </div>
         </section>
