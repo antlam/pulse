@@ -91,67 +91,59 @@
         }
 
         .container {
-            max-width: 600px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 var(--space-6x);
         }
 
-        header {
-            padding: var(--space-8x) 0;
-        }
-
-        .logo {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--brand-50);
-            text-decoration: none;
-        }
-
+        /* Hero Section */
         .hero {
-            padding: var(--space-10x) 0 calc(var(--space-10x) * 3);
-            text-align: center;
+            background: var(--brand-05);
+            padding: var(--space-10x) 0 calc(var(--space-10x) * 2);
+        }
+
+        .hero-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-10x);
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 480px;
+        }
+
+        .hero-logo {
+            margin-bottom: var(--space-8x);
+        }
+
+        .hero-logo img {
+            height: 40px;
+            width: auto;
         }
 
         .hero h1 {
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: var(--space-5x);
+            line-height: 1.15;
+            margin-bottom: var(--space-6x);
             color: var(--text-default);
         }
 
         .hero p {
             font-size: 1.125rem;
             color: var(--text-subdued);
-            margin-bottom: var(--space-10x);
+            margin-bottom: var(--space-8x);
             line-height: 1.7;
         }
 
-        .waitlist-form {
-            display: flex;
-            gap: var(--space-3x);
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .waitlist-form input {
-            flex: 1;
-            min-width: 220px;
-            padding: var(--space-3x) var(--space-4x);
-            border: var(--border-width) solid var(--border-input);
-            border-radius: var(--radius-md);
-            font-size: 1rem;
-            font-family: inherit;
-            background: var(--white);
-        }
-
-        .waitlist-form input:focus {
-            outline: none;
-            border-color: var(--brand-50);
+        .hero p strong {
+            color: var(--text-default);
         }
 
         .btn {
-            padding: var(--space-3x) var(--space-6x);
+            display: inline-block;
+            padding: var(--space-4x) var(--space-8x);
             background: var(--brand-50);
             color: var(--neutral-100);
             border: none;
@@ -161,16 +153,28 @@
             font-family: inherit;
             cursor: pointer;
             transition: background 0.2s;
+            text-decoration: none;
         }
 
         .btn:hover {
             background: var(--brand-60);
         }
 
-        .form-note {
-            margin-top: var(--space-4x);
-            font-size: 0.875rem;
+        /* Hero Image Placeholder */
+        .hero-image {
+            position: relative;
+        }
+
+        .hero-image-placeholder {
+            background: var(--white);
+            border-radius: var(--space-4x);
+            aspect-ratio: 4 / 3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: var(--text-subdued);
+            font-size: 0.875rem;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
         }
 
         footer {
@@ -250,39 +254,46 @@
             color: var(--white);
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 768px) {
+            .hero-inner {
+                grid-template-columns: 1fr;
+                gap: var(--space-8x);
+            }
+
+            .hero-content {
+                max-width: 100%;
+                text-align: center;
+            }
+
             .hero h1 {
-                font-size: 2rem;
+                font-size: 2.25rem;
             }
 
-            .waitlist-form {
-                flex-direction: column;
-            }
-
-            .waitlist-form input {
-                min-width: 100%;
+            .hero-image {
+                order: -1;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <a href="#" class="logo">Jane Pulse</a>
-        </div>
-    </header>
-
     <main>
         <section class="hero">
             <div class="container">
-                <h1>AI-powered insights for your clinic</h1>
-                <p>Connect your Jane account and get a clear view of your revenue, scheduling, and patient retention — in plain language.</p>
-                
-                <form class="waitlist-form" id="waitlist-form">
-                    <input type="email" placeholder="Enter your email" required>
-                    <button type="submit" class="btn">Join Waitlist</button>
-                </form>
-                <p class="form-note">We'll let you know when it's ready.</p>
+                <div class="hero-inner">
+                    <div class="hero-content">
+                        <a href="https://jane.app" class="hero-logo">
+                            <img src="assets/jane-logo-color.png" alt="Jane">
+                        </a>
+                        <h1>AI-powered insights for your clinic</h1>
+                        <p><strong>Connect your Jane account and get a clear view of your revenue, scheduling, and patient retention.</strong> Join the waitlist and be the first to experience AI-powered insights in plain language.</p>
+                        <a href="#waitlist" class="btn">Join the waitlist</a>
+                    </div>
+                    <div class="hero-image">
+                        <div class="hero-image-placeholder">
+                            Product screenshot
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -326,13 +337,5 @@
         </div>
     </footer>
 
-    <script>
-        document.getElementById('waitlist-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = this.querySelector('input').value;
-            alert('Thanks! We\'ll be in touch at ' + email);
-            this.querySelector('input').value = '';
-        });
-    </script>
 </body>
 </html>
