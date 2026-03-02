@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jane Pulse - AI-Powered Business Insights</title>
     <!-- Swap to Proxima Nova later -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -84,7 +87,7 @@
         }
 
         body {
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
             background-color: var(--bg);
             color: var(--text-default);
             line-height: 1.6;
@@ -120,6 +123,7 @@
         .hero-logo img {
             height: 40px;
             width: auto;
+            mix-blend-mode: multiply;
         }
 
         .hero h1 {
@@ -166,6 +170,58 @@
         }
 
         .hero-image-placeholder {
+            background: var(--white);
+            border-radius: var(--space-4x);
+            aspect-ratio: 4 / 3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-subdued);
+            font-size: 0.875rem;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Features Section */
+        .features {
+            padding: calc(var(--space-10x) * 2) 0;
+            background: var(--bg);
+        }
+
+        .feature-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-10x);
+            align-items: center;
+            margin-bottom: calc(var(--space-10x) * 2);
+        }
+
+        .feature-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .feature-row.reverse {
+            direction: rtl;
+        }
+
+        .feature-row.reverse > * {
+            direction: ltr;
+        }
+
+        .feature-content h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: var(--space-5x);
+            color: var(--text-default);
+        }
+
+        .feature-content p {
+            font-size: 1.0625rem;
+            color: var(--text-subdued);
+            line-height: 1.7;
+        }
+
+        .feature-image-placeholder {
             background: var(--white);
             border-radius: var(--space-4x);
             aspect-ratio: 4 / 3;
@@ -272,6 +328,23 @@
             .hero-image {
                 order: -1;
             }
+
+            .feature-row {
+                grid-template-columns: 1fr;
+                gap: var(--space-6x);
+            }
+
+            .feature-row.reverse {
+                direction: ltr;
+            }
+
+            .feature-content {
+                text-align: center;
+            }
+
+            .feature-content h2 {
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
@@ -292,6 +365,30 @@
                         <div class="hero-image-placeholder">
                             Product screenshot
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="container">
+                <div class="feature-row">
+                    <div class="feature-image-placeholder">
+                        Product screenshot
+                    </div>
+                    <div class="feature-content">
+                        <h2>Understand your revenue at a glance</h2>
+                        <p>See where your revenue comes from, spot trends over time, and get AI-powered recommendations to help grow your practice.</p>
+                    </div>
+                </div>
+
+                <div class="feature-row reverse">
+                    <div class="feature-image-placeholder">
+                        Product screenshot
+                    </div>
+                    <div class="feature-content">
+                        <h2>Keep patients coming back</h2>
+                        <p>Track patient retention and get alerts before they slip away. Pulse helps you understand booking patterns and optimize your schedule for efficiency.</p>
                     </div>
                 </div>
             </div>
