@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Jane Pulse</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Brand - Teal */
+            --brand-05: #eafafb;
+            --brand-50: #00c1ca;
+            --brand-60: #00b1b8;
+            --brand-70: #00989e;
+            
+            /* Discovery - Purple */
+            --discovery-50: #ab6de1;
+            --discovery-60: #722ed1;
+            
+            /* Critical - Red */
+            --critical-50: #ff4b3a;
+            --critical-60: #db2b2a;
+            --critical-70: #b71d29;
+            
+            /* Success - Green */
+            --success-50: #33d653;
+            --success-60: #25b650;
+            
+            /* Warning - Yellow */
+            --warning-50: #fba919;
+            --warning-60: #d78812;
+            
+            /* Neutral */
+            --neutral-05: #fcfdfd;
+            --neutral-10: #f9fafa;
+            --neutral-20: #ebeeee;
+            --neutral-30: #dde2e2;
+            --neutral-50: #bcc6c6;
+            --neutral-70: #798d8e;
+            --neutral-90: #344243;
+            --neutral-100: #161c1d;
+            --white: #ffffff;
+            
+            /* Spacing */
+            --space-05x: 2px;
+            --space-1x: 4px;
+            --space-2x: 8px;
+            --space-3x: 12px;
+            --space-4x: 16px;
+            --space-5x: 20px;
+            --space-6x: 24px;
+            --space-7x: 28px;
+            --space-8x: 32px;
+            --space-9x: 36px;
+            --space-10x: 40px;
+            
+            /* Border radius */
+            --radius-sm: var(--space-05x);
+            --radius-md: var(--space-1x);
+            --radius-lg: var(--space-2x);
+            
+            /* Border */
+            --border-width: 1px;
+            --border-default: var(--neutral-30);
+            --border-input: var(--neutral-50);
+            
+            /* Text colors */
+            --text-default: var(--neutral-100);
+            --text-subdued: var(--neutral-70);
+            --text-disabled: var(--neutral-50);
+            --text-link: var(--brand-60);
+            --text-link-hover: var(--brand-70);
+            
+            /* Semantic */
+            --bg: var(--neutral-05);
+        }
+
+        body {
+            font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-default);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background: var(--white);
+            border-bottom: var(--border-width) solid var(--border-default);
+            padding: var(--space-4x) 0;
+        }
+
+        .header-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-6x);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-logo img {
+            height: 32px;
+            width: auto;
+        }
+
+        .header-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-default);
+        }
+
+        /* Main Content */
+        .main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--space-8x) var(--space-6x);
+        }
+
+        .page-header {
+            margin-bottom: var(--space-8x);
+        }
+
+        .page-header h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: var(--space-2x);
+        }
+
+        .page-header p {
+            color: var(--text-subdued);
+        }
+
+        /* Dashboard Grid */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-6x);
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: var(--space-3x);
+            padding: var(--space-6x);
+            border: var(--border-width) solid var(--border-default);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: var(--space-4x);
+        }
+
+        .card-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-subdued);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .card-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-default);
+            margin-bottom: var(--space-2x);
+        }
+
+        .card-change {
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: var(--space-1x);
+        }
+
+        .card-change.positive {
+            color: var(--success-60);
+        }
+
+        .card-change.negative {
+            color: var(--critical-60);
+        }
+
+        /* Insights Section */
+        .insights-section {
+            grid-column: span 3;
+        }
+
+        .insights-card {
+            background: var(--white);
+            border-radius: var(--space-3x);
+            padding: var(--space-6x);
+            border: var(--border-width) solid var(--border-default);
+        }
+
+        .insights-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3x);
+            margin-bottom: var(--space-5x);
+        }
+
+        .insights-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--brand-05);
+            border-radius: var(--space-2x);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .insights-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: var(--brand-60);
+            fill: none;
+            stroke-width: 2;
+        }
+
+        .insights-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+        }
+
+        .insight-item {
+            padding: var(--space-4x) 0;
+            border-bottom: var(--border-width) solid var(--border-default);
+        }
+
+        .insight-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .insight-item:first-child {
+            padding-top: 0;
+        }
+
+        .insight-item p {
+            color: var(--text-default);
+            line-height: 1.6;
+        }
+
+        .insight-item .highlight {
+            color: var(--brand-60);
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .insights-section {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-inner">
+            <a href="index.html" class="header-logo">
+                <img src="assets/Jane_Logo_Colour_NoTM_RGB.png" alt="Jane">
+            </a>
+            <span class="header-title">Pulse</span>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="page-header">
+            <h1>Your clinic insights</h1>
+            <p>Here's how your practice is performing this month.</p>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">Revenue</span>
+                </div>
+                <div class="card-value">$24,580</div>
+                <div class="card-change positive">
+                    <span>↑ 12% from last month</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">Appointments</span>
+                </div>
+                <div class="card-value">187</div>
+                <div class="card-change positive">
+                    <span>↑ 8% from last month</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <span class="card-title">Patient Retention</span>
+                </div>
+                <div class="card-value">73%</div>
+                <div class="card-change negative">
+                    <span>↓ 3% from last month</span>
+                </div>
+            </div>
+
+            <div class="insights-section">
+                <div class="insights-card">
+                    <div class="insights-header">
+                        <div class="insights-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/>
+                                <path d="M12 6a1 1 0 0 0-1 1v5a1 1 0 0 0 .29.71l3 3a1 1 0 0 0 1.42-1.42L13 11.59V7a1 1 0 0 0-1-1z"/>
+                            </svg>
+                        </div>
+                        <h2 class="insights-title">AI Insights</h2>
+                    </div>
+                    
+                    <div class="insight-item">
+                        <p>Your <span class="highlight">Tuesday afternoon</span> slots have 40% more cancellations than other days. Consider sending reminder messages 48 hours before these appointments.</p>
+                    </div>
+                    
+                    <div class="insight-item">
+                        <p><span class="highlight">23 patients</span> haven't booked a follow-up in over 60 days. A quick check-in email could help bring them back.</p>
+                    </div>
+                    
+                    <div class="insight-item">
+                        <p>Revenue from <span class="highlight">massage therapy</span> is up 18% this month. This service is trending — consider promoting it more.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
