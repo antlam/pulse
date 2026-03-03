@@ -348,6 +348,48 @@
             content: " →";
         }
 
+        /* Chart card */
+        .chart-card {
+            background: var(--white);
+            border-radius: var(--space-3x);
+            padding: var(--space-6x);
+            border: var(--border-width) solid var(--border-default);
+        }
+
+        .chart-card-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-subdued);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: var(--space-4x);
+        }
+
+        .chart-callout {
+            font-size: 0.9375rem;
+            color: var(--text-default);
+            margin-top: var(--space-4x);
+            padding-top: var(--space-4x);
+            border-top: var(--border-width) solid var(--border-default);
+        }
+
+        .chart-callout .highlight {
+            color: var(--brand-60);
+            font-weight: 600;
+        }
+
+        .chart-wrapper {
+            position: relative;
+            width: 100%;
+            min-height: 200px;
+            aspect-ratio: 2 / 1;
+        }
+
+        .chart-wrapper canvas {
+            max-width: 100%;
+            height: auto !important;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .section-grid.wide,
@@ -476,6 +518,17 @@
             </div>
         </section>
 
+        <!-- What you earned vs. what you collected -->
+        <section class="section">
+            <h2 class="section-title">What you earned vs. what you collected</h2>
+            <div class="chart-card">
+                <div class="chart-wrapper">
+                    <canvas id="billed-vs-collected-chart" role="img" aria-label="Bar chart: Billed and Collected revenue by month"></canvas>
+                </div>
+                <p class="chart-callout">You left <span class="highlight" id="left-on-table">$0</span> on the table this month.</p>
+            </div>
+        </section>
+
         <!-- Patients & scheduling -->
         <section class="section">
             <h2 class="section-title">Patients & scheduling</h2>
@@ -506,5 +559,77 @@
             </div>
         </section>
     </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.umd.min.js"></script>
+    <script>
+        (function() {
+            var billed = [19000, 20500, 18200, 21500, 19800, 22000];
+            var collected = [17800, 19200, 17100, 20100, 18600, 20500];
+            var months = ['Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar'];
+            var leftOnTable = billed[5] - collected[5];
+
+            document.getElementById('left-on-table').textContent = '$' + leftOnTable.toLocaleString();
+
+            var ctx = document.getElementById('billed-vs-collected-chart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: months,
+                    datasets: [
+                        {
+                            label: 'Billed',
+                            data: billed,
+                            backgroundColor: '#798d8e'
+                        },
+                        {
+                            label: 'Collected',
+                            data: collected,
+                            backgroundColor: '#00c1ca'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    layout: {
+                        padding: { top: 8, right: 8, bottom: 0, left: 8 }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': $' + context.raw.toLocaleString();
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: { display: false },
+                            barPercentage: 0.7,
+                            categoryPercentage: 0.85,
+                            ticks: {
+                                font: { size: 12 },
+                                color: '#798d8e',
+                                maxRotation: 0
+                            }
+                        },
+                        y: {
+                            grid: { display: false },
+                            border: { display: false },
+                            ticks: {
+                                font: { size: 12 },
+                                color: '#798d8e',
+                                callback: function(value) {
+                                    return value >= 1000 ? '$' + (value / 1000) + 'k' : '$' + value;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        })();
+    </script>
 </body>
 </html>
