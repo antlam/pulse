@@ -263,6 +263,106 @@
             color: var(--text-default);
         }
 
+        /* Review card */
+        .review-card {
+            background: var(--white);
+            border-radius: var(--space-3x);
+            padding: var(--space-6x);
+            border: var(--border-width) solid var(--border-default);
+        }
+
+        .review-card-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-subdued);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: var(--space-4x);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3x);
+            margin-bottom: var(--space-4x);
+        }
+
+        .review-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--neutral-20);
+            color: var(--neutral-70);
+            font-size: 0.875rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .review-meta {
+            flex: 1;
+        }
+
+        .review-name {
+            font-size: 0.9375rem;
+            font-weight: 600;
+            color: var(--text-default);
+        }
+
+        .review-stars {
+            margin-top: var(--space-05x);
+            color: #fba919;
+            font-size: 0.875rem;
+            letter-spacing: 1px;
+        }
+
+        .review-text {
+            font-size: 0.9375rem;
+            color: var(--text-default);
+            line-height: 1.6;
+        }
+
+        /* Memberships card */
+        .memberships-card {
+            background: var(--white);
+            border-radius: var(--space-3x);
+            padding: var(--space-6x);
+            border: var(--border-width) solid var(--border-default);
+        }
+
+        .memberships-card-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-subdued);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: var(--space-4x);
+        }
+
+        .memberships-stat {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: var(--space-3x) 0;
+            border-bottom: 1px solid var(--neutral-20);
+            font-size: 0.9375rem;
+        }
+
+        .memberships-stat:last-child {
+            border-bottom: none;
+        }
+
+        .memberships-stat-label {
+            color: var(--text-subdued);
+        }
+
+        .memberships-stat-value {
+            font-weight: 600;
+            color: var(--text-default);
+        }
+
         /* Section headings */
         .section {
             margin-bottom: var(--space-10x);
@@ -733,6 +833,39 @@
                     <div class="staff-stat">
                         <span class="staff-stat-label">No-show rate</span>
                         <span class="staff-stat-value">5%</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Growth signals -->
+        <section class="section">
+            <h2 class="section-title">Growth signals</h2>
+            <div class="section-grid wide">
+                <div class="review-card">
+                    <h3 class="review-card-title">Latest Google review from a new patient</h3>
+                    <div class="review-header">
+                        <div class="review-avatar" aria-hidden="true">MK</div>
+                        <div class="review-meta">
+                            <div class="review-name">Michelle Kim</div>
+                            <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"First time here and already rebooked. The team was so welcoming and the treatment made a real difference. Couldn't recommend more!"</p>
+                </div>
+                <div class="memberships-card">
+                    <h3 class="memberships-card-title">Memberships activity</h3>
+                    <div class="memberships-stat">
+                        <span class="memberships-stat-label">Active memberships</span>
+                        <span class="memberships-stat-value">34</span>
+                    </div>
+                    <div class="memberships-stat">
+                        <span class="memberships-stat-label">Payments processed</span>
+                        <span class="memberships-stat-value">28</span>
+                    </div>
+                    <div class="memberships-stat">
+                        <span class="memberships-stat-label">Payments pending</span>
+                        <span class="memberships-stat-value">6</span>
                     </div>
                 </div>
             </div>
