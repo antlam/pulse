@@ -27,6 +27,7 @@
             
             /* Critical - Red */
             --critical-05: #fff3eb;
+            --critical-10: #ffe7d7;
             --critical-50: #ff4b3a;
             --critical-60: #db2b2a;
             --critical-70: #b71d29;
@@ -243,15 +244,16 @@
             gap: var(--space-4x);
             padding: var(--space-5x) var(--space-6x);
             border-radius: var(--space-2x);
-            border-left: 4px solid var(--critical-60);
-            background: var(--critical-05);
+            border: 1px solid var(--critical-60);
+            background: var(--critical-10);
+            margin-bottom: var(--space-6x);
         }
 
         .alert-icon {
             flex-shrink: 0;
             width: 24px;
             height: 24px;
-            color: var(--critical-60);
+            color: var(--critical-70);
         }
 
         .alert-icon svg {
@@ -269,26 +271,26 @@
         }
 
         .alert-title {
-            font-size: 0.875rem;
-            font-weight: 600;
+            font-size: 0.9375rem;
+            font-weight: 700;
             color: var(--critical-70);
-            margin-bottom: var(--space-1x);
+            margin-bottom: var(--space-2x);
         }
 
         .alert-message {
             font-size: 0.9375rem;
-            color: var(--text-default);
+            color: var(--critical-70);
             line-height: 1.5;
         }
 
         .alert-message a {
-            color: var(--critical-60);
-            font-weight: 600;
-            text-decoration: none;
+            color: var(--critical-70);
+            font-weight: 700;
+            text-decoration: underline;
         }
 
         .alert-message a:hover {
-            text-decoration: underline;
+            color: var(--critical-60);
         }
 
         .trend-placeholder {
@@ -409,6 +411,19 @@
         <!-- Financial -->
         <section class="section">
             <h2 class="section-title">Financial</h2>
+            <div class="alert" role="alert">
+                <div class="alert-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                        <line x1="12" y1="9" x2="12" y2="13"/>
+                        <line x1="12" y1="17" x2="12.01" y2="17"/>
+                    </svg>
+                </div>
+                <div class="alert-content">
+                    <div class="alert-title">Urgent attention</div>
+                    <p class="alert-message">2 expired credit cards on file — payments may fail. <a href="#">Update in Jane → Billing</a></p>
+                </div>
+            </div>
             <div class="section-grid thirds">
                 <div class="card">
                     <div class="card-header">
@@ -443,19 +458,6 @@
                     </div>
                     <div class="card-value">$2,340</div>
                     <div class="card-sub">Across 12 accounts</div>
-                </div>
-            </div>
-            <div class="alert" role="alert">
-                <div class="alert-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
-                        <line x1="12" y1="9" x2="12" y2="13"/>
-                        <line x1="12" y1="17" x2="12.01" y2="17"/>
-                    </svg>
-                </div>
-                <div class="alert-content">
-                    <div class="alert-title">Urgent attention</div>
-                    <p class="alert-message">2 expired credit cards on file — payments may fail. <a href="#">Update in Jane → Billing</a></p>
                 </div>
             </div>
         </section>
