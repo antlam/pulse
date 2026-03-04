@@ -381,6 +381,33 @@
             margin-bottom: var(--space-4x);
         }
 
+        .section-title-row {
+            display: flex;
+            align-items: center;
+            gap: var(--space-2x);
+            margin-bottom: var(--space-4x);
+        }
+
+        .section-title-row .section-title {
+            margin-bottom: 0;
+        }
+
+        .section-title-icon {
+            width: 36px;
+            height: 36px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .section-title-icon img {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+        }
+
         .section-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -675,7 +702,12 @@
 
         <!-- AI Recommendations -->
         <section class="section">
-            <h2 class="section-title">Suggested actions</h2>
+            <div class="section-title-row">
+                <h2 class="section-title">Suggested actions</h2>
+                <div class="section-title-icon" aria-hidden="true">
+                    <img src="assets/Circa_gradient.png" alt="">
+                </div>
+            </div>
             <div class="recommendations-grid">
                 <div class="recommendation-card">
                     <p>Your <span class="highlight">Tuesday afternoon</span> slots have 40% more cancellations than other days. Consider sending reminder messages 48 hours before these appointments.</p>
@@ -710,7 +742,7 @@
                     <span class="hero-gap"><span class="highlight" id="hero-gap">$0</span> still uncollected</span>
                 </p>
                 <div class="chart-wrapper">
-                    <canvas id="billed-vs-collected-chart" role="img" aria-label="Bar chart: Collected revenue by month; current month shows projected vs collected gap"></canvas>
+                    <canvas id="billed-vs-collected-chart" role="img" aria-label="Line chart: Projected and collected revenue by month"></canvas>
                 </div>
             </div>
         </section>
@@ -953,10 +985,11 @@
                 console.error('Chart.js did not load. Try opening the page via a local server (e.g. Live Server or npx serve .) instead of file://');
                 return;
             }
-            // Dummy data: last 6 months (Oct 2025 – Mar 2026). Historical = collected only; March = projected vs collected (actionable).
+            // Dummy data: last 6 months (Oct 2025 – Mar 2026). Projected and collected with strong variance.
             var months = ['Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar'];
-            var collected = [17900, 19500, 17200, 20400, 18800, 20900];
-            var projectedThisMonth = 22400;  // March only
+            var projected = [19800, 24100, 15200, 22900, 17600, 22400];
+            var collected = [18200, 22300, 14100, 21200, 16400, 20900];
+            var projectedThisMonth = projected[5];
             var gapThisMonth = projectedThisMonth - collected[5];
 
             // Hero line above chart: answer first
@@ -970,29 +1003,32 @@
 
             function drawChart() {
                 var ctx = canvas.getContext('2d');
-                // Historical months: collected only (single bar). March: collected + projected side-by-side so the gap is the focal point.
-                var collectedColors = ['#00c1ca', '#00c1ca', '#00c1ca', '#00c1ca', '#00c1ca', '#00b1b8'];  // March slightly darker = current month
-                var projectedMarchOnly = [null, null, null, null, null, projectedThisMonth];
                 new Chart(ctx, {
-                type: 'bar',
+                type: 'line',
                 data: {
                     labels: months,
                     datasets: [
                         {
-                            label: 'Collected revenue',
-                            data: collected,
-                            backgroundColor: collectedColors,
-                            borderWidth: 0,
-                            order: 2
+                            label: 'Projected revenue',
+                            data: projected,
+                            borderColor: '#798d8e',
+                            backgroundColor: 'rgba(121, 141, 142, 0.1)',
+                            borderWidth: 2,
+                            fill: true,
+                            tension: 0.3,
+                            pointRadius: 3,
+                            pointHoverRadius: 5
                         },
                         {
-                            label: 'Projected (this month)',
-                            data: projectedMarchOnly,
-                            backgroundColor: 'rgba(121, 141, 142, 0.5)',
-                            borderColor: '#798d8e',
+                            label: 'Collected revenue',
+                            data: collected,
+                            borderColor: '#00c1ca',
+                            backgroundColor: 'rgba(0, 193, 202, 0.15)',
                             borderWidth: 2,
-                            borderDash: [4, 2],
-                            order: 1  // Draw first so collected sits in front for March
+                            fill: true,
+                            tension: 0.3,
+                            pointRadius: 3,
+                            pointHoverRadius: 5
                         }
                     ]
                 },
@@ -1002,17 +1038,16 @@
                     layout: {
                         padding: { top: 8, right: 8, bottom: 0, left: 8 }
                     },
+                    interaction: {
+                        intersect: false,
+                        mode: 'index'
+                    },
                     plugins: {
                         legend: { display: true, position: 'top' },
                         tooltip: {
                             callbacks: {
                                 label: function(context) {
-                                    if (context.raw == null) return null;
-                                    var label = context.dataset.label + ': $' + context.raw.toLocaleString();
-                                    if (context.dataIndex === 5 && context.dataset.label === 'Projected (this month)') {
-                                        label += ' (on track)';
-                                    }
-                                    return label;
+                                    return context.dataset.label + ': $' + context.raw.toLocaleString();
                                 }
                             }
                         }
@@ -1020,8 +1055,6 @@
                     scales: {
                         x: {
                             grid: { display: false },
-                            barPercentage: 0.7,
-                            categoryPercentage: 0.85,
                             ticks: {
                                 font: { size: 12 },
                                 color: '#798d8e',
