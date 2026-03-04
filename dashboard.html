@@ -408,6 +408,45 @@
             object-fit: contain;
         }
 
+        .section-title-icon-wrapper {
+            position: relative;
+            display: inline-flex;
+        }
+
+        .section-title-icon-wrapper .section-title-icon-tooltip {
+            position: absolute;
+            left: 50%;
+            bottom: calc(100% + var(--space-2x));
+            transform: translateX(-50%);
+            padding: var(--space-2x) var(--space-3x);
+            background: var(--neutral-90);
+            color: var(--white);
+            font-size: 0.75rem;
+            font-weight: 500;
+            white-space: nowrap;
+            border-radius: var(--radius-md);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.15s ease, visibility 0.15s ease;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .section-title-icon-wrapper .section-title-icon-tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 5px solid transparent;
+            border-top-color: var(--neutral-90);
+        }
+
+        .section-title-icon-wrapper:hover .section-title-icon-tooltip {
+            opacity: 1;
+            visibility: visible;
+        }
+
         .section-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -704,8 +743,11 @@
         <section class="section">
             <div class="section-title-row">
                 <h2 class="section-title">Suggested actions</h2>
-                <div class="section-title-icon" aria-hidden="true">
-                    <img src="assets/Circa_gradient.png" alt="">
+                <div class="section-title-icon-wrapper" tabindex="0" aria-describedby="suggested-actions-tooltip">
+                    <span id="suggested-actions-tooltip" class="section-title-icon-tooltip" role="tooltip">AI-powered suggestions</span>
+                    <div class="section-title-icon" aria-hidden="true">
+                        <img src="assets/Circa_gradient.png" alt="">
+                    </div>
                 </div>
             </div>
             <div class="recommendations-grid">
