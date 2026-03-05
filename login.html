@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign in — Jane Pulse</title>
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        a { color: inherit; text-decoration: none; }
+        button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+        :root {
+            --brand-50:       #00c1ca;
+            --brand-active:   #027989;
+            --brand-20:       #97ebef;
+            --brand-05:       #eafafb;
+            --neutral-default:   #04070a;
+            --neutral-secondary: #54575a;
+            --neutral-subdued:   #8e8e8e;
+            --neutral-10:        #f9fafa;
+            --neutral-20:        #ebeeee;
+            --neutral-30:        #dde2e2;
+            --border-default:    #dcddde;
+            --bg-light:          #f4f6f6;
+            --white:             #ffffff;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: var(--neutral-default);
+            background: var(--bg-light);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .login-page {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 32px 24px 24px;
+        }
+
+        .login-header {
+            margin-bottom: 48px;
+        }
+
+        .login-header a {
+            display: inline-block;
+        }
+
+        .login-header img {
+            height: 44px;
+            width: auto;
+            display: block;
+        }
+
+        .login-main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px 0;
+        }
+
+        .login-card {
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+            padding: 40px;
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .login-card h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--neutral-default);
+            margin-bottom: 28px;
+            line-height: 1.3;
+        }
+
+        .login-form .field {
+            margin-bottom: 20px;
+        }
+
+        .login-form label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--neutral-default);
+            margin-bottom: 6px;
+        }
+
+        .login-form .label-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+
+        .login-form .label-row label {
+            margin-bottom: 0;
+        }
+
+        .login-form .forgot-link {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--brand-active);
+            white-space: nowrap;
+        }
+
+        .login-form .forgot-link:hover {
+            text-decoration: underline;
+        }
+
+        .login-form input {
+            width: 100%;
+            padding: 12px 14px;
+            font-family: inherit;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: var(--neutral-default);
+            background: var(--white);
+            border: 1px solid var(--border-default);
+            border-radius: 8px;
+            transition: border-color 0.15s;
+        }
+
+        .login-form input::placeholder {
+            color: var(--neutral-subdued);
+        }
+
+        .login-form input:focus {
+            outline: none;
+            border-color: var(--brand-50);
+        }
+
+        .login-form .btn-signin {
+            width: 100%;
+            margin-top: 8px;
+            padding: 14px 24px;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 600;
+            line-height: 1.5;
+            color: var(--white);
+            background: var(--brand-50);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+
+        .login-form .btn-signin:hover {
+            background: var(--brand-active);
+        }
+
+        .login-footer {
+            margin-top: auto;
+            padding-top: 24px;
+            font-size: 0.875rem;
+            color: var(--neutral-secondary);
+        }
+
+        .login-footer a {
+            color: var(--brand-active);
+        }
+
+        .login-footer a:hover {
+            text-decoration: underline;
+        }
+
+        .login-footer span + a::before {
+            content: ' · ';
+            color: var(--neutral-secondary);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-page">
+        <header class="login-header">
+            <a href="index.html">
+                <img src="assets/Jane_Logo_Colour_NoTM_RGB.png" alt="Jane">
+            </a>
+        </header>
+
+        <main class="login-main">
+            <div class="login-card">
+                <h1>Welcome back 👋</h1>
+                <form class="login-form" action="dashboard.html" method="get">
+                    <div class="field">
+                        <label for="login-id">Email, username or phone number</label>
+                        <input type="text" id="login-id" name="login" placeholder="Email, username or phone number" autocomplete="username">
+                    </div>
+                    <div class="field">
+                        <div class="label-row">
+                            <label for="password">Password</label>
+                            <a href="#" class="forgot-link">Forgot username or password?</a>
+                        </div>
+                        <input type="password" id="password" name="password" placeholder="Password" autocomplete="current-password">
+                    </div>
+                    <button type="submit" class="btn-signin">Sign in</button>
+                </form>
+            </div>
+        </main>
+
+        <footer class="login-footer">
+            <span>Booking by Jane</span>
+            <a href="https://jane.app/terms">Terms of Use</a>
+            <a href="https://jane.app/privacy">Privacy Policy</a>
+        </footer>
+    </div>
+</body>
+</html>
