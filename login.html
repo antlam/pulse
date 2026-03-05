@@ -9,6 +9,7 @@
         a { color: inherit; text-decoration: none; }
         button { font-family: inherit; cursor: pointer; border: none; background: none; }
 
+        /* Tokens aligned with Jane design system (Forms / Text — storybook.jane.qa) */
         :root {
             --brand-50:       #00c1ca;
             --brand-active:   #027989;
@@ -20,9 +21,21 @@
             --neutral-10:        #f9fafa;
             --neutral-20:        #ebeeee;
             --neutral-30:        #dde2e2;
-            --border-default:    #dcddde;
+            --neutral-50:        #bcc6c6;
+            --border-default:    #dde2e2;
+            --border-input:      var(--neutral-50);
             --bg-light:          #f4f6f6;
             --white:             #ffffff;
+            --space-2x:          8px;
+            --space-3x:          12px;
+            --space-4x:          16px;
+            --space-5x:          20px;
+            --space-6x:          24px;
+            --radius-md:         4px;
+            --radius-lg:         8px;
+            --text-default:      var(--neutral-default);
+            --text-subdued:      var(--neutral-subdued);
+            --text-disabled:     var(--neutral-50);
         }
 
         body {
@@ -69,7 +82,7 @@
         .login-card {
             background: var(--white);
             border-radius: 12px;
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+            border: 1px solid var(--border-default);
             padding: 40px;
             width: 100%;
             max-width: 420px;
@@ -84,23 +97,25 @@
         }
 
         .login-form .field {
-            margin-bottom: 20px;
+            margin-bottom: var(--space-5x);
         }
 
+        /* Label: design system $label — 12px/12px */
         .login-form label {
             display: block;
-            font-size: 0.875rem;
+            font-size: 12px;
+            line-height: 12px;
             font-weight: 500;
-            color: var(--neutral-default);
-            margin-bottom: 6px;
+            color: var(--text-default);
+            margin-bottom: var(--space-2x);
         }
 
         .login-form .label-row {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 8px;
-            margin-bottom: 6px;
+            gap: var(--space-2x);
+            margin-bottom: var(--space-2x);
         }
 
         .login-form .label-row label {
@@ -108,7 +123,8 @@
         }
 
         .login-form .forgot-link {
-            font-size: 0.875rem;
+            font-size: 12px;
+            line-height: 12px;
             font-weight: 500;
             color: var(--brand-active);
             white-space: nowrap;
@@ -118,40 +134,46 @@
             text-decoration: underline;
         }
 
+        /* Text input: Forms/Text — border-input, body-14/16, radius-lg */
         .login-form input {
             width: 100%;
-            padding: 12px 14px;
+            padding: var(--space-3x) var(--space-4x);
             font-family: inherit;
-            font-size: 1rem;
-            line-height: 1.5;
-            color: var(--neutral-default);
+            font-size: 14px;
+            line-height: 22px;
+            color: var(--text-default);
             background: var(--white);
-            border: 1px solid var(--border-default);
-            border-radius: 8px;
-            transition: border-color 0.15s;
+            border: 1px solid var(--border-input);
+            border-radius: var(--radius-lg);
+            transition: border-color 0.15s, box-shadow 0.15s;
         }
 
         .login-form input::placeholder {
-            color: var(--neutral-subdued);
+            color: var(--text-disabled);
+        }
+
+        .login-form input:hover {
+            border-color: var(--neutral-30);
         }
 
         .login-form input:focus {
             outline: none;
             border-color: var(--brand-50);
+            box-shadow: 0 0 0 3px var(--brand-05);
         }
 
         .login-form .btn-signin {
             width: 100%;
-            margin-top: 8px;
-            padding: 14px 24px;
+            margin-top: var(--space-2x);
+            padding: var(--space-3x) var(--space-6x);
             font-family: inherit;
-            font-size: 1rem;
+            font-size: 16px;
+            line-height: 24px;
             font-weight: 600;
-            line-height: 1.5;
             color: var(--white);
             background: var(--brand-50);
             border: none;
-            border-radius: 8px;
+            border-radius: var(--radius-lg);
             cursor: pointer;
             transition: background 0.15s;
         }
