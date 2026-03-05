@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jane Pulse — AI-Powered Practice Insights</title>
+    <title>Jane Pulse - Plain-Language Insights for Your Practice</title>
     <style>
         /* ─── Fonts ─────────────────────────────────────────────────────────── */
         @font-face {
@@ -223,11 +223,27 @@
 
         /* ─── Hero ───────────────────────────────────────────────────────────── */
         .hero {
-            background: var(--white);
+            background: transparent;
+            position: relative;
             padding: 80px 0 25px;
         }
 
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: -160px;
+            background: #eafafb;
+            clip-path: polygon(0% 0%, 100% 0%, 100% 30%, 0% 100%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
         .hero-inner {
+            position: relative;
+            z-index: 1;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 80px;
@@ -441,8 +457,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: #f5fdfd;
-            mix-blend-mode: multiply;
+            background: #eafafb;
             clip-path: polygon(0 30%, 100% 0%, 100% 100%, 0% 100%);
             pointer-events: none;
         }
@@ -453,7 +468,7 @@
             display: flex;
             gap: 20px;
             align-items: flex-start;
-            padding: 60px 0 48px;
+            padding: 230px 0 48px;
         }
 
         /* Left info block: icon + text column */
@@ -734,9 +749,9 @@
                 <a href="#">Pricing</a>
             </nav>
             <div class="nav-ctas">
-                <a href="login.html" class="btn-nav-primary">Try it free</a>
+                <a href="https://antlam.github.io/pulse/login.html" class="btn-nav-primary">Try it free</a>
                 <a href="#demo" class="btn-nav-outline">Book a demo</a>
-                <a href="login.html" class="nav-person" aria-label="Sign in">
+                <a href="https://antlam.github.io/pulse/login.html" class="nav-person" aria-label="Sign in">
                     <img src="https://www.figma.com/api/mcp/asset/9df6b3a0-674e-4178-b3e1-013b6015ac00" alt="" width="20" height="20">
                 </a>
             </div>
@@ -753,11 +768,11 @@
                     <h1>Insight without the spreadsheet.</h1>
                     <p>Jane Pulse turns your data into plain-language insights on revenue, scheduling, and retention.</p>
                     <div class="hero-ctas">
-                        <a href="login.html" class="btn">See your insights</a>
+                        <a href="https://antlam.github.io/pulse/login.html" class="btn">See your insights</a>
                     </div>
                 </div>
                 <div class="hero-image">
-                    <div class="feature-placeholder"></div>
+                    <img src="assets/images/web/hero.jpg" alt="Practitioner reviewing clinic data">
                 </div>
             </div>
         </section>
@@ -769,7 +784,7 @@
                     <div class="overview-left">
                         <p class="overview-label">Overview</p>
                         <h2>Your data tells a story. Pulse reads it for you.</h2>
-                        <p>Upload a CSV from any practice management system and get AI-generated insights across revenue, scheduling, and patient retention — in plain language, in minutes.</p>
+                        <p>Sign into your Jane account and get plain-language insights across revenue, scheduling, and patient retention, in minutes.</p>
                     </div>
                     <div class="overview-right">
                         <p>Here's what Pulse surfaces:</p>
@@ -783,11 +798,11 @@
                         </div>
                         <div class="check-item">
                             <img src="https://www.figma.com/api/mcp/asset/4309d5f1-466e-4e7b-9483-cb803e0655cd" alt="">
-                            <span>Patients who haven't booked in 60+ days — before they find someone else</span>
+                            <span>Patients who haven't booked in 60+ days, so you can reach out before they find someone else</span>
                         </div>
                         <div class="check-item">
                             <img src="https://www.figma.com/api/mcp/asset/4309d5f1-466e-4e7b-9483-cb803e0655cd" alt="">
-                            <span>Plain-language summaries — no spreadsheets, no data expertise required</span>
+                            <span>Plain-language summaries, no spreadsheets or data expertise required</span>
                         </div>
                     </div>
                 </div>
@@ -802,10 +817,10 @@
                 <div class="feature-row">
                     <div class="feature-content">
                         <h2>Know exactly where your money is going</h2>
-                        <p>See produced vs. collected revenue, outstanding balances, and collection rates — all in one view. No more guessing why the numbers don't add up.</p>
+                        <p>See produced vs. collected revenue, outstanding balances, and collection rates, all in one view. No more guessing why the numbers don't add up.</p>
                     </div>
                     <div class="feature-visual">
-                        <div class="chart-container">
+                        <div class="chart-container" style="height:300px;">
                             <canvas id="revenueChart"></canvas>
                         </div>
                     </div>
@@ -814,11 +829,11 @@
                 <!-- Scheduling -->
                 <div class="feature-row reverse">
                     <div class="feature-visual">
-                        <div class="feature-placeholder"></div>
+                        <img src="assets/images/web/feature-schedule.jpg" alt="Schedule view in Jane">
                     </div>
                     <div class="feature-content">
                         <h2>Find the patterns eating your schedule</h2>
-                        <p>No-shows, late cancellations, peak hours — Pulse surfaces what's costing you time and money, so you can act on it instead of just absorbing it.</p>
+                        <p>No-shows, late cancellations, peak hours. Pulse surfaces what's costing you time and money, so you can act on it instead of just absorbing it.</p>
                     </div>
                 </div>
 
@@ -826,10 +841,10 @@
                 <div class="feature-row">
                     <div class="feature-content">
                         <h2>Bring back patients before they're gone</h2>
-                        <p>Pulse flags patients who haven't booked in 60+ days and gives you the insight to re-engage them — before they find someone else.</p>
+                        <p>Pulse flags patients who haven't booked in 60+ days and gives you what you need to re-engage them before they find someone else.</p>
                     </div>
                     <div class="feature-visual">
-                        <div class="feature-placeholder"></div>
+                        <img src="assets/images/web/feature-retention.jpg" alt="Running a practice with Jane">
                     </div>
                 </div>
 
@@ -969,5 +984,72 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="js/charts.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const existing = Chart.getChart('revenueChart');
+        if (existing) existing.destroy();
+        const ctx = document.getElementById('revenueChart').getContext('2d');
+        new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+            datasets: [
+              {
+                label: 'Projected revenue',
+                data: [42000, 38500, 45100, 39800, 46500, 44200],
+                borderColor: '#798d8e',
+                backgroundColor: 'rgba(121, 141, 142, 0.1)',
+                borderWidth: 2,
+                fill: true,
+                tension: 0.3,
+                pointRadius: 3,
+                pointHoverRadius: 5
+              },
+              {
+                label: 'Collected revenue',
+                data: [39800, 36200, 42100, 38100, 44100, 41800],
+                borderColor: '#00c1ca',
+                backgroundColor: 'rgba(0, 193, 202, 0.15)',
+                borderWidth: 2,
+                fill: true,
+                tension: 0.3,
+                pointRadius: 3,
+                pointHoverRadius: 5
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            layout: { padding: { top: 8, right: 8, bottom: 0, left: 8 } },
+            interaction: { intersect: false, mode: 'index' },
+            plugins: {
+              legend: { display: true, position: 'top' },
+              tooltip: {
+                callbacks: {
+                  label: ctx => ctx.dataset.label + ': $' + ctx.raw.toLocaleString()
+                }
+              }
+            },
+            scales: {
+              x: {
+                grid: { display: false },
+                ticks: { font: { size: 12 }, color: '#798d8e', maxRotation: 0 }
+              },
+              y: {
+                beginAtZero: true,
+                grid: { display: true, color: '#ebeeee' },
+                border: { display: false },
+                ticks: {
+                  font: { size: 12 },
+                  color: '#798d8e',
+                  callback: v => v >= 1000 ? '$' + (v / 1000) + 'k' : '$' + v
+                }
+              }
+            }
+          }
+        });
+      });
+    </script>
 </body>
 </html>
